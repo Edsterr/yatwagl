@@ -9,11 +9,11 @@ function App() {
   return (
     <Router>
       <div>
-        <Header />
+        <MenuBar />
 
         <Route exact path="/" component={Home} />
         <Route path="/about" component={About} />
-        <Route path="/profilePage" component={ProfilePageFunction} />
+        <Route path="/profilePage" component={ProfilePage} />
       </div>
     </Router>
   );
