@@ -23,6 +23,7 @@ export default class ProfilePage extends React.Component {
             <Paper>
                 <Typography variant="h5" component="h3">
                     This is a sheet of paper.
+                    {this.props.name}
                 </Typography>
                 <Typography component="p">
                     Paper can be used to build surface or other elements for your application.
