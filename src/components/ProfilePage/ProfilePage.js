@@ -2,7 +2,6 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import AppBar from "./MenuBar";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -21,7 +20,7 @@ export default class ProfilePage extends React.Component {
 
     render() {
         return (
-            <AppBar />
+            <h1>Profile</h1>
         )
         // const classes = useStyles();
         // return (
