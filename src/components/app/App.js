@@ -11,11 +11,19 @@ function App() {
       <div>
         <Route exact path="/" component={Home} />
         <Route path="/about" component={About} />
-        <Route path="/profilePage" component={Profile} />
+        <Route path="/profilePage" component={getSampleProfilePage} />
           <MenuBar />
       </div>
     </Router>
   );
+}
+
+function getSampleProfilePage() {
+    return new Profile({
+        firstName: "John",
+        secondName: "Smith",
+        description: "A Software Developer at JP Morgan (Glasgow)"
+    });
 }
 
 function About() {
