@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import './App.css';
 import Home from '../home/Home';
+import MenuBar from './MenuBar.js';
 
 function App() {
   return (
@@ -22,14 +23,8 @@ function About() {
 
 function Header() {
   return (
-    <ul>
-      <li>
-        <Link to="/">Home</Link>
-      </li>
-      <li>
-        <Link to="/about">About</Link>
-      </li>
-    </ul>
+      <MenuBar />
+
   );
 }
 
