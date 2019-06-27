@@ -5,17 +5,17 @@ import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import RestoreIcon from '@material-ui/icons/Restore';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
-import { Button } from "react-bootstrap";
-import { Link } from 'react-router-dom';
 
 import HomeIcon from '@material-ui/icons/Home';
 
 const useStyles = makeStyles({
     root: {
-        width: "70%",
-        "padding-left": "15%",
-        "padding-right": "15%"
+      width: '100%'
     },
+
+
+
+
 });
 
 export default function MenuBar() {
@@ -23,18 +23,22 @@ export default function MenuBar() {
     const [value, setValue] = React.useState(0);
 
     return (
-        <BottomNavigation
-            value={value}
-            onChange={(event, newValue) => {
-                setValue(newValue);
-            }}
-            showLabels
-            className={classes.root}
-        >
-            <Link to="/Register"><Button color="white">Login</Button></Link>
-            <BottomNavigationAction icon={<HomeIcon />} />
-            <BottomNavigationAction icon={<FavoriteIcon />} />
-            <BottomNavigationAction icon={<LocationOnIcon />} />
-        </BottomNavigation>
+      <div class = "Nab bar fixed">
+        <nav class="navbar navbar-expand-md fixed-bottom">
+
+          <BottomNavigation
+              value={value}
+              onChange={(event, newValue) => {
+                  setValue(newValue);
+              }}
+              showLabels
+              className={classes.root}
+          >
+                    <BottomNavigationAction icon={<HomeIcon />} />
+                    <BottomNavigationAction icon={<FavoriteIcon />} />
+                    <BottomNavigationAction icon={<LocationOnIcon />} />
+              </BottomNavigation>
+          </nav>
+        </div>
     );
 }
