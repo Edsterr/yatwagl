@@ -46,15 +46,15 @@ export default class Register extends React.Component {
         });
 
         var xmlHttp = new XMLHttpRequest();
-        xmlHttp.onreadystatechange = function() { 
+        xmlHttp.onreadystatechange = function() {
             if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
                 console.log(xmlHttp.responseText);
         }
-        xmlHttp.open("POST", `http://localhost:8080/users`, true); // true for asynchronous 
+        xmlHttp.open("POST", `http://localhost:8080/users`, true); // true for asynchronous
         xmlHttp.setRequestHeader('Content-type', 'application/json');
         console.log(data);
         xmlHttp.send(stringifyFormData(data));
-        
+
     }
 
 
@@ -85,7 +85,7 @@ export default class Register extends React.Component {
                   <label htmlFor="Role">Role:</label>
                   <input name="role" type="text" onChange={this.handleChange}  />
 
-                  <input type="submit" value="Submit"></input>
+                  <input type="submit" id = "submit" value="Submit"></input>
               </div>
               </form>
             </div>
