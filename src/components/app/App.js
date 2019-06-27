@@ -8,7 +8,7 @@ function App() {
   return (
     <Router>
       <div>
-        <Header />
+        <MenuBar />
 
         <Route exact path="/" component={Home} />
         <Route path="/about" component={About} />
@@ -19,13 +19,6 @@ function App() {
 
 function About() {
   return <h2>About</h2>;
-}
-
-function Header() {
-  return (
-      <MenuBar />
-
-  );
 }
 
 export default App;
