@@ -32,12 +32,10 @@ class App extends React.Component {
   }
 
   loginPage() {
-    console.log(this);
    return <Login handleSubmit={this.submitLogin.bind(this)} />
   }
 
   render() {
-    console.log(this.state.email);
     return (
       <Router>
         <div>
