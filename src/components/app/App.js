@@ -4,6 +4,7 @@ import './App.css';
 import Home from '../home/Home';
 import MenuBar from './MenuBar';
 import ProfilePage from '../ProfilePage/ProfilePage';
+import qr from '../QR/QR';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route path="/about" component={About} />
         <Route path="/profilePage" component={ProfilePage} />
+        <Route path="/qr" component={qr} />
       </div>
     </Router>
   );
