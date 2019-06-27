@@ -131,6 +131,7 @@ export default class Register extends React.Component {
                   </FormGroup>
                     <FormGroup>
                       <div className="row"><Button
+                          className="btn"
                           variant="primary"
                           block
                           bsSize="large"
