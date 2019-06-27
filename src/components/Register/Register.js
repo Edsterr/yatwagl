@@ -67,29 +67,23 @@ export default class Register extends React.Component {
                   <label htmlFor="Email">Email:</label>
                   <input name="id" type="text" onChange={this.handleChange}  />
 
+                  <label htmlFor="Password">Password:</label>
+                  <input name="password" type="text" onChange={this.handleChange}  />
+
                   <label htmlFor="First name">First name:</label>
                   <input name="fname" type="text" onChange={this.handleChange}  />
 
                   <label htmlFor="Last name">Last name:</label>
                   <input name="lname" type="text" onChange={this.handleChange}  />
 
-                  <label htmlFor="Password">Password:</label>
-                  <input name="password" type="text" onChange={this.handleChange}  />
-
                   <label htmlFor="Transcription of name">Transcription of name:</label>
                   <input name="transcription" type="text" onChange={this.handleChange}  />
 
-                  <label htmlFor="Pronounciation of name">Pronounciation of name:</label>
-                  <input name="pronounce" type="audio" onChange={this.handleChange}  />
-
                   <label htmlFor="LinkedIn">LinkedIn:</label>
                   <input name="LinkedIn" type="text" onChange={this.handleChange}  />
-                  
+
                   <label htmlFor="Role">Role:</label>
                   <input name="role" type="text" onChange={this.handleChange}  />
-
-                  <label htmlFor="Photo">Photo:</label>
-                  <input name="photo" type="text" onChange={this.handleChange}  />
 
                   <input type="submit" value="Submit"></input>
               </div>
