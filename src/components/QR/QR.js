@@ -17,6 +17,7 @@ class qr extends Component {
   handleScan(result){
     if(result){
       this.setState({ result })
+      window.location.href=this.state.result
     }
   }
   handleError(err){
@@ -33,6 +34,7 @@ class qr extends Component {
 
     return(
       <div>
+
         <QrReader
           delay={this.state.delay}
           style={previewStyle}
@@ -42,7 +44,10 @@ class qr extends Component {
         <p>{this.state.result}</p>
 
 
-        <QRCode value= "localhost:3000/registration" />
+        <QRCode value= "register" />
+        <a href={ this.state.result }>
+          <button>Click me</button>
+        </a>
       </div>
     )
   }
