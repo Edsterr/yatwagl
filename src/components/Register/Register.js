@@ -9,40 +9,49 @@ export default class Register extends React.Component {
 
     constructor(props) {
       super(props);
-      this.state = {value: '', };
-
+      this.state = {
+        fname: '',
+        surname: '',
+        password: '',
+        transcription: '',
+        audio: '',
+        email: '',
+        role: '',
+        photo: '',
+        linkedin: ''
+      };
       this.handleChange = this.handleChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
       }
 
 
-    handleChange(event) {
-      this.setState({value: event.target.value});
-    }
+      handleChange (event) {
+          // check it out: we get the evt.target.name (which will be either "email" or "password")
+          // and use it to target the key on our `state` object with the same name, using bracket syntax
+          this.setState({ [event.target.name]: event.target.value });
+      }
 
-    handleSubmit(event) {
-      alert('A name was submitted: ' + this.state.value);
-      event.preventDefault();
-    }
+      handleSubmit(event) {
+          //event.preventDefault();
+      }
 
     render(){
         return (
             <main>
-              <form>
-                    First name: <input type="text" value={this.state.value} onChange={this.handleChange} name="fname"></input>
-                    Last name: <input type="text" name="lname"></input>
-                    Password: <input type="text" name="password"></input>
-                    Transcription of name: <input type="text" name="transcription"></input>
-                    Pronounciation of name: <input type="audio" name="audio"></input>
-                    Email: <input type="text" name="email"></input>
-                    Role: <input type="text" name="role"></input>
-                    Photo: <input type="image" name="photo"></input>
-                    LinkedIn: <input type="url" name="linkedIn"></input>
+              <form onSubmit={this.handleSubmit}>
+                    First name: <input type="text" onChange={this.handleChange} name="fname"></input>
+                    Surname: <input type="text" onChange={this.handleChange} name="surname"></input>
+                    Password: <input type="text" onChange={this.handleChange} name="password"></input>
+                    Transcription of name: <input type="text" onChange={this.handleChange} name="transcription"></input>
+                    Pronounciation of name: <input type="audio" onChange={this.handleChange} name="audio"></input>
+                    Email: <input type="text" onChange={this.handleChange} name="email"></input>
+                    Role: <input type="text" onChange={this.handleChange} name="role"></input>
+                    Photo: <input type="image" onChange={this.handleChange} name="photo"></input>
+                    LinkedIn: <input type="url" onChange={this.handleChange} name="linkedIn"></input>
 
-                    <input type="submit" value="Submit"></input>
+                    <input type="submit" value="Register"></input>
               </form>
                     <Link to="/Home"><Button color="white">Home</Button></Link>
-                    <Button color="white">Register</Button>
             </main>
         );
     }
