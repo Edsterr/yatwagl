@@ -6,12 +6,30 @@ import MenuBar from '../app/MenuBar.js';
 import { Button } from "react-bootstrap";
 
 export default class Register extends React.Component {
-    //constructor(){}
+
+    constructor(props) {
+      super(props);
+      this.state = {value: '', };
+
+      this.handleChange = this.handleChange.bind(this);
+      this.handleSubmit = this.handleSubmit.bind(this);
+      }
+
+
+    handleChange(event) {
+      this.setState({value: event.target.value});
+    }
+
+    handleSubmit(event) {
+      alert('A name was submitted: ' + this.state.value);
+      event.preventDefault();
+    }
+
     render(){
         return (
             <main>
               <form>
-                    First name: <input type="text" name="fname"></input>
+                    First name: <input type="text" value={this.state.value} onChange={this.handleChange} name="fname"></input>
                     Last name: <input type="text" name="lname"></input>
                     Password: <input type="text" name="password"></input>
                     Transcription of name: <input type="text" name="transcription"></input>
