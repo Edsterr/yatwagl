@@ -1,9 +1,10 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import './App.css';
 import Home from '../home/Home';
 import MenuBar from './MenuBar';
 import qr from '../QR/QR';
+import History from '../History/History'
 import Profile from '../ProfilePage/Profile';
 import Login from '../Login/Login';
 import Register from '../Register/Register.js';
@@ -47,10 +48,11 @@ class App extends React.Component {
 
           <Route exact path="/" component={Home} />
           <Route path="/about" component={About} />
-          <Route path="/profile" render={this.isLoggedIn.bind(this)} /> 
+          <Route path="/profile" render={this.isLoggedIn.bind(this)} />
           <Route path="/login" render={this.loginPage.bind(this)} />
           <Route path="/register" component={Register} />
           <Route path="/qr" component={qr} />
+          <Route path="/qr" component={History} />
           <MenuBar />
         </div>
       </Router>
