@@ -24,7 +24,7 @@ class Profile extends React.Component {
             }
             var xmlHttp = new XMLHttpRequest();
             var self = this;
-            xmlHttp.onreadystatechange = function() { 
+            xmlHttp.onreadystatechange = function() {
                 if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
                     var data = JSON.parse(xmlHttp.responseText);
                     console.log(data);
@@ -39,7 +39,7 @@ class Profile extends React.Component {
                     self.props.history.push("/error");
                 }
             }
-            xmlHttp.open("GET", `http://localhost:8080/users/${email}`, true); // true for asynchronous 
+            xmlHttp.open("GET", `http://localhost:8080/users/${email}`, true); // true for asynchronous
             xmlHttp.send(null);
         }
         this.state = {
@@ -53,7 +53,7 @@ class Profile extends React.Component {
         this.onPlay = this.onPlay.bind(this);
         this.sound = new Audio(soundFile);
     }
-    
+
     onPlay(){
       this.sound.play();
     }
@@ -61,6 +61,7 @@ class Profile extends React.Component {
     render() {
         return (
             <div className="container">
+                <div><h3>Profile information</h3></div>
                 <div className="span3 well">
                     <div className="modal-content">
                         <div className="modal-body">

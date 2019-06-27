@@ -34,7 +34,7 @@ class qr extends Component {
 
     return(
       <div>
-
+        <div><h3>Scan QR code</h3></div>
         <QrReader
           delay={this.state.delay}
           style={previewStyle}

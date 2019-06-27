@@ -7,20 +7,14 @@ import { Link } from 'react-router-dom';
 function Home() {
   return (
     <div className="Home">
+    <div><h3>Home</h3></div>
       <header className="Home-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Let others scan your QR code to learn about you.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React maybe
-        </a>
-        <Link to="/login"><Button color="white">Login</Button></Link>
+
+        <h4>No QR code displayed? <Link to="/login">Login</Link></h4>
       </header>
     </div>
   );

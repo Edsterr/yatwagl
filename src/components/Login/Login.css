@@ -1,7 +1,6 @@
 @media all {
     .Login {
         padding: 0px 0;
-        background-color: #D7D9D7;
         text-align: center;
         overflow-y: scroll;
         width: 100%;
@@ -21,4 +20,9 @@
 
   input{
     text-align: center;
+  }
+
+  h4{
+    text-align: center;
+    padding-right: 6.5rem;
   }

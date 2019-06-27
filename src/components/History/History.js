@@ -20,6 +20,7 @@ export default class ProfilePage extends React.Component {
     render() {
         return (
             <div>
+              <div><h3>People you have scanned</h3></div>
                 <Paper >
                     <Typography variant="h5" component="h3">
                         This is a sheet of paper.

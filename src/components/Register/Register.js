@@ -60,8 +60,9 @@ export default class Register extends React.Component {
 
     render(){
         return (
-
-            <div className="Register">
+            <div>
+              <div className="Register">
+              <div><h3>Register</h3></div>
               <form onSubmit={this.handleSubmit}>
               <div className="column">
                   <label htmlFor="Email">Email:</label>
@@ -79,6 +80,9 @@ export default class Register extends React.Component {
                   <label htmlFor="Transcription of name">Transcription of name:</label>
                   <input name="transcription" type="text" onChange={this.handleChange}  />
 
+                  </div>
+                  <div className="column">
+
                   <label htmlFor="Pronounciation of name">Pronounciation of name:</label>
                   <input name="pronounce" type="audio" onChange={this.handleChange}  />
 
@@ -94,6 +98,7 @@ export default class Register extends React.Component {
                   <input type="submit" id = "submit" value="Submit"></input>
               </div>
               </form>
+            </div>
             </div>
 
         );
