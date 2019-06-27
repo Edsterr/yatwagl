@@ -1,6 +1,8 @@
 import React from 'react';
 import logo from '../../assets/images/logo.svg';
 import './Home.css';
+import { Button } from "react-bootstrap";
+import { Link } from 'react-router-dom';
 
 function Home() {
   return (
@@ -16,8 +18,9 @@ function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React mabye
+          Learn React maybe
         </a>
+        <Link to="/Register"><Button color="white">Login</Button></Link>
       </header>
     </div>
   );

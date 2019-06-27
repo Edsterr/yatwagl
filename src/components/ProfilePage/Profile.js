@@ -11,7 +11,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default class ProfilePage extends React.Component {
+export default class Profile extends React.Component {
     constructor(props) {
         super(props);
 
@@ -42,4 +42,5 @@ export default class ProfilePage extends React.Component {
             <button onClick={this.onPlay}>Click me </button>
         )
     }
+
 }
