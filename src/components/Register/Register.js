@@ -2,23 +2,30 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import './Register.css';
 import Home from '../home/Home';
-import MenuBar from './MenuBar.js';
+import MenuBar from '../app/MenuBar.js';
+import { Button } from "react-bootstrap";
 
-function App() {
-  return (
-    <Router>
-      <div>
-        <MenuBar />
+export default class Register extends React.Component {
+    //constructor(){}
+    render(){
+        return (
+            <main>
+              <form>
+                    First name: <input type="text" name="fname"></input>
+                    Last name: <input type="text" name="lname"></input>
+                    Password: <input type="text" name="password"></input>
+                    Transcription of name: <input type="text" name="transcription"></input>
+                    Pronounciation of name: <input type="audio" name="audio"></input>
+                    Email: <input type="text" name="email"></input>
+                    Role: <input type="text" name="role"></input>
+                    Photo: <input type="image" name="photo"></input>
+                    LinkedIn: <input type="url" name="linkedIn"></input>
 
-        <Route exact path="/" component={Home} />
-        <Route path="/about" component={About} />
-      </div>
-    </Router>
-  );
+                    <input type="submit" value="Submit"></input>
+              </form>
+                    <Link to="/Home"><Button color="white">Home</Button></Link>
+                    <Button color="white">Register</Button>
+            </main>
+        );
+    }
 }
-
-function About() {
-  return <h2>About</h2>;
-}
-
-export default App;
