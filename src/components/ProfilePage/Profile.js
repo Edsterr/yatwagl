@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import { ReactMic } from 'react-mic';
 import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -7,7 +8,6 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
-import soundFile from './kk.mp3';
 
 
 class Profile extends React.Component {
@@ -22,40 +22,119 @@ class Profile extends React.Component {
             } else {
                 email = this.props.email;
             }
-            var xmlHttp = new XMLHttpRequest();
+            var getData = new XMLHttpRequest();
             var self = this;
-            xmlHttp.onreadystatechange = function() {
-                if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
-                    var data = JSON.parse(xmlHttp.responseText);
-                    console.log(data);
+            getData.onreadystatechange = function() {
+                if (getData.readyState == 4 && getData.status == 200) {
+                    var data = JSON.parse(getData.responseText);
                     self.setState({
                         firstName: data.fname,
-                        secondName: data.sname,
+                        secondName: data.lname,
                         role: data.role,
+                        email: email,
                         description: data.description,
                         pronounciation: data.pronounciation
                     });
-                } else if (xmlHttp.status == 404) {
+                } else if (getData.status == 404) {
                     self.props.history.push("/error");
                 }
             }
-            xmlHttp.open("GET", `http://localhost:8080/users/${email}`, true); // true for asynchronous
-            xmlHttp.send(null);
+            getData.open("GET", `http://localhost:8080/users/${email}`, true); // true for asynchronous
+            getData.send(null);
+
+            var getSound = new XMLHttpRequest();
+            var self = this;
+            getSound.onreadystatechange = function() {
+                if (getSound.readyState == 4 && getSound.status == 200) {
+                    var data = JSON.parse(getSound.responseText);
+                    self.setState({
+                        button: {},
+                        reactmic: {display: "none"}
+                    });
+                    self.sound = new Audio(data.sound);
+                } else if (getSound.status == 404) {
+                    self.setState({
+                        button: {display: "none"},
+                        reactmic: {}
+                    })
+                }
+            }
+            getSound.open("GET", `http://localhost:8080/audio/${email}`, true); // true for asynchronous
+            getSound.send(null);
         }
         this.state = {
             firstName: '',
             secondName: '',
             role: '',
-            email: email,
+            email: '',
             description: '',
-            pronunciation: ''
+            pronunciation: '',
+            record: false,
+            audio: <p>Audio</p>
         };
         this.onPlay = this.onPlay.bind(this);
-        this.sound = new Audio(soundFile);
+        this.onStop = this.onStop.bind(this);
+        this.deleteSound = this.deleteSound.bind(this);
+        this.startRecording = this.startRecording.bind(this);
+        this.stopRecording = this.stopRecording.bind(this);
+    }
+
+    startRecording = () => {
+        console.log("start");
+        this.setState({
+            record: true
+        });
+    }
+
+    stopRecording = () => {
+        console.log("stop");
+        this.setState({
+            record: false
+        });
+    }
+
+    onData(recordedBlob) {
+        console.log('chunk of real-time data is: ', recordedBlob);
+    }
+
+    onStop(recordedBlob) {
+        console.log('recordedBlob is: ', recordedBlob);
+        console.log(this);
+        var self = this;
+        var reader = new FileReader();
+        reader.onloadend = function() {
+            console.log(self);
+            var base64data = reader.result;
+            var data = {
+                id: self.state.email,
+                sound: base64data
+            }
+            var xmlHttp = new XMLHttpRequest();
+            xmlHttp.onreadystatechange = function() {
+                if (xmlHttp.status == 200)
+                    console.log(xmlHttp.responseText);
+            }
+            xmlHttp.open("POST", `http://localhost:8080/audio`, true); // true for asynchronous
+            xmlHttp.setRequestHeader('Content-type', 'application/json');
+            console.log(data);
+            xmlHttp.send(JSON.stringify(data));
+        }
+        reader.readAsDataURL(recordedBlob.blob);
     }
 
     onPlay(){
       this.sound.play();
+    }
+
+    deleteSound() {
+        var deleteSoundFile = new XMLHttpRequest();
+        deleteSoundFile.onreadystatechange = function() {
+            if (deleteSoundFile.readyState == 4 && deleteSoundFile.status == 200) {
+                console.log(deleteSoundFile.responseText);
+            }
+        }
+        deleteSoundFile.open("DELETE", `http://localhost:8080/audio/${this.state.email}`, true); // true for asynchronous
+        deleteSoundFile.send(null);
     }
 
     render() {
@@ -85,9 +164,23 @@ class Profile extends React.Component {
                                 </CardContent>
                             </CardActionArea>
                             <CardActions>
+                                <div style={this.state.button}>
                                 <Button onClick={this.onPlay} size="small" color="primary">
                                     Pronounce name ({ this.state.pronunciation })
                                 </Button>
+                                <Button onClick={this.deleteSound} size="small" color="primary">Delete Sound</Button>
+                                </div>
+                                <div style={this.state.reactmic}>
+                                    <ReactMic
+                                        record={this.state.record}
+                                        className="sound-wave"
+                                        onStop={this.onStop}
+                                        onData={this.onData}
+                                        strokeColor="#000000"
+                                        backgroundColor="#FF4081" />
+                                    <button onClick={this.startRecording} type="button">Start</button>
+                                    <button onClick={this.stopRecording} type="button">Stop</button>
+                                </div>
                             </CardActions>
                         </Card>
                     </div>

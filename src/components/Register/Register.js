@@ -1,12 +1,12 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import './Register.css';
 import Home from '../home/Home';
 import MenuBar from '../app/MenuBar.js';
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import FixedAspectRatio from "../app/aspect-ratio.js";
 
-export default class Register extends React.Component {
+class Register extends React.Component {
     constructor(props){
         super(props);
 
@@ -45,10 +45,12 @@ export default class Register extends React.Component {
           res: stringifyFormData(data),
         });
 
+        var self = this;
         var xmlHttp = new XMLHttpRequest();
         xmlHttp.onreadystatechange = function() {
             if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
                 console.log(xmlHttp.responseText);
+                self.props.history.push('/profile');
         }
         xmlHttp.open("POST", `http://localhost:8080/users`, true); // true for asynchronous
         xmlHttp.setRequestHeader('Content-type', 'application/json');
@@ -68,32 +70,23 @@ export default class Register extends React.Component {
                   <label htmlFor="Email">Email:</label>
                   <input name="id" type="text" onChange={this.handleChange}  />
 
+                  <label htmlFor="Password">Password:</label>
+                  <input name="password" type="text" onChange={this.handleChange}  />
+
                   <label htmlFor="First name">First name:</label>
                   <input name="fname" type="text" onChange={this.handleChange}  />
 
                   <label htmlFor="Last name">Last name:</label>
                   <input name="lname" type="text" onChange={this.handleChange}  />
 
-                  <label htmlFor="Password">Password:</label>
-                  <input name="password" type="text" onChange={this.handleChange}  />
-
                   <label htmlFor="Transcription of name">Transcription of name:</label>
                   <input name="transcription" type="text" onChange={this.handleChange}  />
-
-                  </div>
-                  <div className="column">
-
-                  <label htmlFor="Pronounciation of name">Pronounciation of name:</label>
-                  <input name="pronounce" type="audio" onChange={this.handleChange}  />
 
                   <label htmlFor="LinkedIn">LinkedIn:</label>
                   <input name="LinkedIn" type="text" onChange={this.handleChange}  />
 
                   <label htmlFor="Role">Role:</label>
                   <input name="role" type="text" onChange={this.handleChange}  />
-
-                  <label htmlFor="Photo">Photo:</label>
-                  <input name="photo" type="text" onChange={this.handleChange}  />
 
                   <input type="submit" id = "submit" value="Submit"></input>
               </div>
@@ -113,3 +106,5 @@ function stringifyFormData(fd) {
   console.log(JSON.stringify(data, null, 2));
   return JSON.stringify(data, null, 2);
 }
+
+export default withRouter(Register);
