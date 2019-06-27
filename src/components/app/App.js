@@ -20,7 +20,11 @@ class App extends React.Component {
       console.log("Here");
       return <Home />;
     } else {
-      return <Profile email={this.state.email} />;
+      return <Profile
+            firstName = "John"
+            secondName = "Smith"
+            email = {this.state.email}
+      />;
     }
   }
 

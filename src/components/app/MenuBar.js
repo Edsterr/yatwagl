@@ -13,10 +13,6 @@ const useStyles = makeStyles({
     root: {
       width: '100%'
     },
-
-
-
-
 });
 
 export default function MenuBar() {
