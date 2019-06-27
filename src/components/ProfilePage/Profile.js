@@ -20,18 +20,16 @@ export default class Profile extends React.Component {
             secondName: this.props.secondName,
             role: this.props.role,
             email: this.props.email,
-            description: "fasdf",
-            pronunciation: ""
-        }
+            description: this.props.description,
+            pronunciation: this.props.pronunciation
+        };
         this.onPlay = this.onPlay.bind(this);
         this.sound = new Audio(soundFile);
-          }
-
-        onPlay(){
-          this.sound.play();
     }
 
-
+    onPlay(){
+      this.sound.play();
+    }
 
     render() {
         return (
@@ -59,12 +57,9 @@ export default class Profile extends React.Component {
                                 </CardContent>
                             </CardActionArea>
                             <CardActions>
-                                <Button size="small" color="primary">
+                                <Button onClick={this.onPlay} size="small" color="primary">
                                     Pronounce name ({ this.state.pronunciation })
                                 </Button>
-                            </CardActions>
-                            <CardActions>
-                              <button onClick={this.onPlay}>Click me </button>
                             </CardActions>
                         </Card>
                     </div>
