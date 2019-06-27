@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import './App.css';
 import Home from '../home/Home';
 import MenuBar from './MenuBar';
+import qr from '../QR/QR';
 import Profile from '../ProfilePage/Profile';
 import Login from '../Login/Login';
 import Register from '../Register/Register.js';
@@ -22,7 +23,11 @@ class App extends React.Component {
       console.log("Here");
       return <Home />;
     } else {
-      return <Profile email={this.state.email} />;
+      return <Profile
+            firstName = "John"
+            secondName = "Smith"
+            email = {this.state.email}
+      />;
     }
   }
 
@@ -44,7 +49,8 @@ class App extends React.Component {
           <Route path="/about" component={About} />
           <Route path="/profile" render={this.isLoggedIn.bind(this)} /> 
           <Route path="/login" render={this.loginPage.bind(this)} />
-          <Route path="/Register" component={Register} />
+          <Route path="/register" component={Register} />
+          <Route path="/qr" component={qr} />
           <MenuBar />
         </div>
       </Router>
