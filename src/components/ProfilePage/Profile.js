@@ -9,7 +9,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default class ProfilePage extends React.Component {
+export default class Profile extends React.Component {
     constructor(props) {
         super(props);
 
@@ -22,7 +22,7 @@ export default class ProfilePage extends React.Component {
         return (
             <Paper>
                 <Typography variant="h5" component="h3">
-                    This is a sheet of paper.
+                    Make a new P
                 </Typography>
                 <Typography component="p">
                     Paper can be used to build surface or other elements for your application.
@@ -30,4 +30,5 @@ export default class ProfilePage extends React.Component {
             </Paper>
         )
     }
+
 }
