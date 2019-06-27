@@ -1,10 +1,23 @@
-@media all and (min-width: 480px) {
+@media all {
     .Register {
         padding: 60px 0;
+        background-color: #D7D9D7;
     }
 
     .Register form {
-        margin: 0 auto;
-        max-width: 200px;
+        text-align: center;
+    }
+
+    #fname, #lname, #password, #transcription, #audio, #email, #role, #photo, #linkedIn {
+        margin-bottom: 1rem;
+        width: 300px;
+        height: 30px;
+        border-radius: 4px;
+        position: relative;
+    }
+
+    #fname:hover, #lname:hover, #password:hover, #transcription:hover, #audio:hover, #email:hover, #role:hover, #photo:hover, #linkedIn:hover {
+        background-color: #B48EAE;
+        box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.05);
     }
 }
