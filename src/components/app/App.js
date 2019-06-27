@@ -3,15 +3,17 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import './App.css';
 import Home from '../home/Home';
 import MenuBar from './MenuBar.js';
+import ProfilePage from './ProfilePage.js';
 
 function App() {
   return (
     <Router>
       <div>
-        <MenuBar />
+        <Header />
 
         <Route exact path="/" component={Home} />
         <Route path="/about" component={About} />
+        <Route path="/profilePage" component={ProfilePageFunction} />
       </div>
     </Router>
   );
