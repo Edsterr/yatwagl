@@ -117,7 +117,13 @@ export default class Register extends React.Component {
                           onChange={this.handleChange}
                       />
                   </FormGroup>
-                    <input type="submit" value="Register"></input>
+                  <Button
+                      block
+                      bsSize="large"
+                      type="submit"
+                  >
+                      Register
+                  </Button>
               </form>
             </div>
         );
