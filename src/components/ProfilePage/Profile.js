@@ -22,7 +22,7 @@ export default class Profile extends React.Component {
         return (
             <Paper>
                 <Typography variant="h5" component="h3">
-                    {this.props.name}
+                    {this.props.email}
                     Make a new P
                 </Typography>
                 <Typography component="p">
