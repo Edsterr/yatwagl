@@ -19,7 +19,8 @@ export default class Profile extends React.Component {
             secondName: this.props.secondName,
             role: this.props.role,
             email: this.props.email,
-            description: "fasdf"
+            description: "fasdf",
+            pronunciation: ""
         }
     }
 
@@ -37,9 +38,7 @@ export default class Profile extends React.Component {
                         </div>
                         <Card>
                             <CardActionArea>
-                                <CardMedia
-                                    image = ".././assets/images/genericProfilePicture.jpg"
-                                />
+                                <CardMedia />
                                 <CardContent>
                                     <h3 className="media-heading">{this.state.firstName + ' ' + this.state.secondName}<small>{this.state.role}</small></h3>
                                     <Typography variant="body1" color="textSecondary" component="p">
@@ -52,7 +51,7 @@ export default class Profile extends React.Component {
                             </CardActionArea>
                             <CardActions>
                                 <Button size="small" color="primary">
-                                    Pronounce name
+                                    Pronounce name ({ this.state.pronunciation })
                                 </Button>
                             </CardActions>
                         </Card>

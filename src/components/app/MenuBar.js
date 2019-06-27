@@ -30,6 +30,11 @@ export default function MenuBar() {
               }}
               showLabels
               className={classes.root}
+              styles = {{
+                  width: "100%",
+                  position: "fixed",
+                  bottom: 0
+              }}
           >
               <BottomNavigationAction icon={
                   <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="Menu">
