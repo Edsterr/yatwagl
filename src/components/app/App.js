@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import './App.css';
 import Home from '../home/Home';
 import MenuBar from './MenuBar';
-import ProfilePage from '../ProfilePage/ProfilePage';
+import Profile from '../ProfilePage/Profile';
+import Register from '../Register/Register.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -18,7 +19,7 @@ class App extends React.Component {
     if (this.state.name === '') {
       return <Home />;
     } else {
-      return <ProfilePage name={this.state.name}/>;
+      return <Profile name={this.state.name}/>;
     }
   }
 
@@ -26,11 +27,12 @@ class App extends React.Component {
     return (
       <Router>
         <div>
-          <MenuBar />
 
           <Route exact path="/" component={Home} />
           <Route path="/about" component={About} />
-          <Route path="/profilePage" render={this.isLoggedIn.bind(this)} /> 
+          <Route path="/profile" render={this.isLoggedIn.bind(this)} /> 
+          <Route path="/Register" component={Register} />
+          <MenuBar />
         </div>
       </Router>
     );
