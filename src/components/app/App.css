@@ -23,7 +23,7 @@
 }
 
 .App-link {
-  color: #61dafb;
+  color: #bf2e55;
 }
 
 @keyframes App-logo-spin {
@@ -38,8 +38,21 @@
 input{
   color: white;
   border-radius: 12px;
+  width: 25rem;
 }
 
 #submit{
+  color: white;
   border-radius: 12px;
+  background-color: #bf2e55;
+  text-align: center;
+  width: 25rem;
+}
+
+#submit:hover {
+  background-color: #a1a1a1;
+}
+
+#submit:active {
+  background-color: #888;
 }
