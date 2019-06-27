@@ -74,6 +74,7 @@ class Profile extends React.Component {
         };
         this.onPlay = this.onPlay.bind(this);
         this.onStop = this.onStop.bind(this);
+        this.deleteSound = this.deleteSound.bind(this);
         this.startRecording = this.startRecording.bind(this);
         this.stopRecording = this.stopRecording.bind(this);
     }
@@ -125,6 +126,17 @@ class Profile extends React.Component {
       this.sound.play();
     }
 
+    deleteSound() {
+        var deleteSoundFile = new XMLHttpRequest();
+        deleteSoundFile.onreadystatechange = function() { 
+            if (deleteSoundFile.readyState == 4 && deleteSoundFile.status == 200) {
+                console.log(deleteSoundFile.responseText);
+            }
+        }
+        deleteSoundFile.open("DELETE", `http://localhost:8080/audio/${this.state.email}`, true); // true for asynchronous 
+        deleteSoundFile.send(null);
+    }
+
     render() {
         return (
             <div className="container">
@@ -155,6 +167,7 @@ class Profile extends React.Component {
                                 <Button onClick={this.onPlay} size="small" color="primary">
                                     Pronounce name ({ this.state.pronunciation })
                                 </Button>
+                                <Button onClick={this.deleteSound} size="small" color="primary">Delete Sound</Button>
                                 </div>
                                 <div style={this.state.reactmic}>
                                     <ReactMic
