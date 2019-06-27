@@ -15,6 +15,7 @@ export default class Profile extends React.Component {
         this.state = {
             firstName: this.props.firstName,
             secondName: this.props.secondName,
+            email: this.props.email,
             description: this.props.description
         }
     }
@@ -29,6 +30,9 @@ export default class Profile extends React.Component {
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="h2">
                             { this.state.firstName + ' ' + this.state.secondName }
+                        </Typography>
+                        <Typography variant="body2" color="textSecondary" component="p">
+                            { this.state.email }
                         </Typography>
                         <Typography variant="body2" color="textSecondary" component="p">
                             { this.state.description }
