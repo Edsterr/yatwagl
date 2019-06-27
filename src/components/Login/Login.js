@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
+import './Login.css';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -38,17 +39,15 @@ class Login extends React.Component {
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
-                    <label>
-                        Email:
-                        <input type="text" id="email" value={this.state.email} onChange={this.handleChange} />
-                    </label>
-                    <label>
-                        Password:
-                        <input type="text" id="password" value={this.state.password} onChange={this.handleChange} />
-                    </label>
-                    <input type="submit" value="Submit"></input>
+                    <label> Email: </label>
+                    <input type="text" id="email" value={this.state.email} onChange={this.handleChange} />
+
+                    <label>  Password: </label>
+                    <input type="text" id="password" value={this.state.password} onChange={this.handleChange} />
+
+                    <input type="submit" id= "submit" value="Submit"></input>
                 </form>
-                <Link to="/register">Register</Link>
+                <h4>New to yatwagl? <Link to="/register">Register</Link></h4>
             </div>
         )
     }

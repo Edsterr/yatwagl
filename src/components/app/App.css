@@ -34,3 +34,12 @@
     transform: rotate(360deg);
   }
 }
+
+input{
+  color: white;
+  border-radius: 12px;
+}
+
+#submit{
+  border-radius: 12px;
+}
