@@ -1,12 +1,12 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import './Register.css';
 import Home from '../home/Home';
 import MenuBar from '../app/MenuBar.js';
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import FixedAspectRatio from "../app/aspect-ratio.js";
 
-export default class Register extends React.Component {
+class Register extends React.Component {
     constructor(props){
         super(props);
 
@@ -45,10 +45,12 @@ export default class Register extends React.Component {
           res: stringifyFormData(data),
         });
 
+        var self = this;
         var xmlHttp = new XMLHttpRequest();
         xmlHttp.onreadystatechange = function() {
             if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
                 console.log(xmlHttp.responseText);
+                self.props.history.push('/profile');
         }
         xmlHttp.open("POST", `http://localhost:8080/users`, true); // true for asynchronous
         xmlHttp.setRequestHeader('Content-type', 'application/json');
@@ -102,3 +104,5 @@ function stringifyFormData(fd) {
   console.log(JSON.stringify(data, null, 2));
   return JSON.stringify(data, null, 2);
 }
+
+export default withRouter(Register);

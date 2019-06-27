@@ -111,7 +111,7 @@ class Profile extends React.Component {
             }
             var xmlHttp = new XMLHttpRequest();
             xmlHttp.onreadystatechange = function() { 
-                if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+                if (xmlHttp.status == 200)
                     console.log(xmlHttp.responseText);
             }
             xmlHttp.open("POST", `http://localhost:8080/audio`, true); // true for asynchronous 
