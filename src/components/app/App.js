@@ -7,41 +7,41 @@ import Profile from '../ProfilePage/Profile';
 import Register from '../Register/Register.js';
 
 class App extends React.Component {
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
 
-        this.state = {
-            email: 'Simon@jpmchase.com'
-        }
+    this.state = {
+      email: 'Simon@jpmchase.com'
     }
+  }
 
-    isLoggedIn() {
-        if (this.state.email === '') {
-            console.log("Here");
-            return <Home />;
-        } else {
-            return <Profile email={this.state.email} />;
-        }
+  isLoggedIn() {
+    if (this.state.email === '') {
+      console.log("Here");
+      return <Home />;
+    } else {
+      return <Profile email={this.state.email} />;
     }
+  }
 
-    render() {
-        return (
-            <Router>
-                <div>
+  render() {
+    return (
+      <Router>
+        <div>
 
-                    <Route exact path="/" component={Home} />
-                    <Route path="/about" component={About} />
-                    <Route path="/profile" render={this.isLoggedIn.bind(this)} />
-                    <Route path="/Register" component={Register} />
-                    <MenuBar />
-                </div>
-            </Router>
-        );
-    }
+          <Route exact path="/" component={Home} />
+          <Route path="/about" component={About} />
+          <Route path="/profile" render={this.isLoggedIn.bind(this)} /> 
+          <Route path="/Register" component={Register} />
+          <MenuBar />
+        </div>
+      </Router>
+    );
+  }
 }
 
 function About() {
-    return <h2>About</h2>;
+  return <h2>About</h2>;
 }
 
 export default App;
