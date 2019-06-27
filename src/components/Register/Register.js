@@ -9,6 +9,7 @@ export default class Register extends React.Component {
 
     constructor(props) {
       super(props);
+
       this.state = {
         fname: '',
         surname: '',
@@ -31,15 +32,32 @@ export default class Register extends React.Component {
           this.setState({ [event.target.name]: event.target.value });
       }
 
-      handleSubmit(event) {
-          event.preventDefault();
-          const data = new FormData(event.target);
 
-          fetch('/api/form-submit-url', {
-            method: 'POST',
-            body: data,
-      });
-    }
+
+      handleSubmit(event) {
+        event.preventDefault();
+        if (!event.target.checkValidity()) {
+        	this.setState({
+            invalid: true,
+            displayErrors: true,
+          });
+          return;
+        }
+        const form = event.target;
+        const data = new FormData(form);
+
+        for (let name of data.keys()) {
+          const input = form.elements[name];
+          const parserName = input.dataset.parse;
+        }
+
+        this.setState({
+        	res: stringifyFormData(data),
+          invalid: false,
+          displayErrors: false,
+        });
+}
+
 
     render(){
         return (
@@ -61,4 +79,13 @@ export default class Register extends React.Component {
             </main>
         );
     }
+}
+
+function stringifyFormData(fd) {
+  const data = {};
+	for (let key of fd.keys()) {
+  	data[key] = fd.get(key);
+  }
+  console.log(JSON.stringify(data, null, 2));
+  return JSON.stringify(data, null, 2);
 }
