@@ -20,7 +20,7 @@ function Home() {
         >
           Learn React maybe
         </a>
-        <Link to="/Register"><Button color="white">Login</Button></Link>
+        <Link to="/login"><Button color="white">Login</Button></Link>
       </header>
     </div>
   );
