@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
@@ -8,7 +8,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default class Login extends React.Component {
+class Login extends React.Component {
     constructor(props) {
         super(props);
 
@@ -22,9 +22,9 @@ export default class Login extends React.Component {
     }
 
     handleSubmit(event) {
-        console.log(this);
         event.preventDefault();
         this.props.handleSubmit(this.state.email, this.state.password);
+        this.props.history.push('/profile');
     }
 
     handleChange(event) {
@@ -46,10 +46,12 @@ export default class Login extends React.Component {
                         Password:
                         <input type="text" id="password" value={this.state.password} onChange={this.handleChange} />
                     </label>
-                    <input type="submit" value="Submit" />
+                    <input type="submit" value="Submit"></input>
                 </form>
                 <Link to="/profile">Profile</Link>
             </div>
         )
     }
 }
+
+export default withRouter(Login);
