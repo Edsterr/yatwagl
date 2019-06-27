@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
 import Home from '../home/Home';
 import MenuBar from './MenuBar';
@@ -8,6 +8,7 @@ import History from '../History/History'
 import Profile from '../ProfilePage/Profile';
 import Login from '../Login/Login';
 import Register from '../Register/Register.js';
+import Error from './Error';
 import FixedAspectRatio from "../app/aspect-ratio.js";
 
 class App extends React.Component {
@@ -23,13 +24,9 @@ class App extends React.Component {
     console.log(this.state.email);
     if (this.state.email === '') {
       console.log("Here");
-      return <Home />;
+      return <Profile email = '' />;
     } else {
-      return <Profile
-            firstName = "John"
-            secondName = "Smith"
-            email = {this.state.email}
-      />;
+      return <Profile email = {this.state.email} />;
     }
   }
 
@@ -49,9 +46,16 @@ class App extends React.Component {
 
             <Route exact path="/" component={Home} />
             <Route path="/about" component={About} />
-            <Route path="/profile" render={this.isLoggedIn.bind(this)} />
+            <Switch>
+              <Route path="/profile/:email" render={this.isLoggedIn.bind(this)} />
+              <Route path="/profile" render={this.isLoggedIn.bind(this)} />
+            </Switch>
             <Route path="/login" render={this.loginPage.bind(this)} />
             <Route path="/register" component={Register} />
+            <Switch>
+            <Route path="/error/:id" component={Error} />
+            <Route path="/error" component={Error} />
+            </Switch>
             <Route path="/qr" component={qr} />
             <Route path="/qr" component={History} />
 

@@ -45,6 +45,16 @@ export default class Register extends React.Component {
           res: stringifyFormData(data),
         });
 
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.onreadystatechange = function() { 
+            if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+                console.log(xmlHttp.responseText);
+        }
+        xmlHttp.open("POST", `http://localhost:8080/users`, true); // true for asynchronous 
+        xmlHttp.setRequestHeader('Content-type', 'application/json');
+        console.log(data);
+        xmlHttp.send(stringifyFormData(data));
+        
     }
 
 
@@ -54,9 +64,11 @@ export default class Register extends React.Component {
             <div className="Register">
               <form onSubmit={this.handleSubmit}>
               <div className="column">
+                  <label htmlFor="Email">Email:</label>
+                  <input name="id" type="text" onChange={this.handleChange}  />
+
                   <label htmlFor="First name">First name:</label>
                   <input name="fname" type="text" onChange={this.handleChange}  />
-
 
                   <label htmlFor="Last name">Last name:</label>
                   <input name="lname" type="text" onChange={this.handleChange}  />
@@ -72,10 +84,7 @@ export default class Register extends React.Component {
 
                   <label htmlFor="LinkedIn">LinkedIn:</label>
                   <input name="LinkedIn" type="text" onChange={this.handleChange}  />
-
-                  <label htmlFor="Email">Email:</label>
-                  <input name="email" type="text" onChange={this.handleChange}  />
-
+                  
                   <label htmlFor="Role">Role:</label>
                   <input name="role" type="text" onChange={this.handleChange}  />
 
