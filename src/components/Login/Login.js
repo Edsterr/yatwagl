@@ -1,8 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import AppBar from "./MenuBar";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -10,29 +8,48 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default class ProfilePage extends React.Component {
+export default class Login extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-
+            email: '',
+            password: ''
         }
+
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleSubmit(event) {
+        console.log(this);
+        event.preventDefault();
+        this.props.handleSubmit(this.state.email, this.state.password);
+    }
+
+    handleChange(event) {
+        this.setState({ [event.target.id]: event.target.value })
+        console.log(event.target.value);
+        console.log("email = " + this.state.email);
+        console.log("password = " + this.state.password);
     }
 
     render() {
         return (
-            <AppBar />
+            <div>
+                <form onSubmit={this.handleSubmit}>
+                    <label>
+                        Email:
+                        <input type="text" id="email" value={this.state.email} onChange={this.handleChange} />
+                    </label>
+                    <label>
+                        Password:
+                        <input type="text" id="password" value={this.state.password} onChange={this.handleChange} />
+                    </label>
+                    <input type="submit" value="Submit" />
+                </form>
+                <Link to="/profile">Profile</Link>
+            </div>
         )
-        // const classes = useStyles();
-        // return (
-        //     <Paper className={classes.root}>
-        //         <Typography variant="h5" component="h3">
-        //             This is a sheet of paper.
-        //         </Typography>
-        //         <Typography component="p">
-        //             Paper can be used to build surface or other elements for your application.
-        //         </Typography>
-        //     </Paper>
-        // )
     }
 }
