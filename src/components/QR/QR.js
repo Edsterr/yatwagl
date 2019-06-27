@@ -8,16 +8,17 @@ class qr extends Component {
   constructor(props){
     super(props)
     this.state = {
-      delay: 100,
+      delay: 500,
       result: 'No result',
     }
 
     this.handleScan = this.handleScan.bind(this)
   }
-  handleScan(data){
-    this.setState({
-      result: data,
-    })
+  handleScan(result){
+    if(result){
+      this.setState({ result })
+      window.location.href=this.state.result
+    }
   }
   handleError(err){
     console.error(err)
@@ -28,8 +29,12 @@ class qr extends Component {
       width: 320,
     }
 
+    var React = require('react');
+    var QRCode = require('qrcode.react');
+
     return(
       <div>
+
         <QrReader
           delay={this.state.delay}
           style={previewStyle}
@@ -38,6 +43,11 @@ class qr extends Component {
           />
         <p>{this.state.result}</p>
 
+
+        <QRCode value= "register" />
+        <a href={ this.state.result }>
+          <button>Click me</button>
+        </a>
       </div>
     )
   }

@@ -5,6 +5,7 @@ import Home from '../home/Home';
 import MenuBar from './MenuBar';
 import qr from '../QR/QR';
 import Profile from '../ProfilePage/Profile';
+import Login from '../Login/Login';
 import Register from '../Register/Register.js';
 
 class App extends React.Component {
@@ -12,11 +13,12 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      email: 'Simon@jpmchase.com'
+      email: ''
     }
   }
 
   isLoggedIn() {
+    console.log(this.state.email);
     if (this.state.email === '') {
       console.log("Here");
       return <Home />;
@@ -29,6 +31,15 @@ class App extends React.Component {
     }
   }
 
+  submitLogin(email, password) {
+      alert(email + '\n' + password);
+      this.setState({ email });
+  }
+
+  loginPage() {
+   return <Login handleSubmit={this.submitLogin.bind(this)} />
+  }
+
   render() {
     return (
       <Router>
@@ -36,8 +47,9 @@ class App extends React.Component {
 
           <Route exact path="/" component={Home} />
           <Route path="/about" component={About} />
-          <Route path="/profile" render={this.isLoggedIn.bind(this)} />
-          <Route path="/Register" component={Register} />
+          <Route path="/profile" render={this.isLoggedIn.bind(this)} /> 
+          <Route path="/login" render={this.loginPage.bind(this)} />
+          <Route path="/register" component={Register} />
           <Route path="/qr" component={qr} />
           <MenuBar />
         </div>
