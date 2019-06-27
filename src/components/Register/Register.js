@@ -31,120 +31,56 @@ export default class Register extends React.Component {
     }
 
     handleSubmit = event => {
+        console.log(event.target)
         event.preventDefault();
-        if (!event.target.checkValidity()) {
-        	this.setState({
-            invalid: true,
-            displayErrors: true,
-          });
-          return;
-        }
         const form = event.target;
         const data = new FormData(form);
 
-        for (let name of data.keys()) {
-          const input = form.elements[name];
-          const parserName = input.dataset.parse;
-        }
+         // for (let name of data.keys()) {
+         //  const input = form.elements[name];
+         //   const parserName = input.dataset.parse;
+         // }
         this.setState({
           res: stringifyFormData(data),
-          invalid: false,
-          displayErrors: false,
         });
 
     }
+
 
     render(){
         return (
             <div className="Register">
               <form onSubmit={this.handleSubmit}>
-                  <FormGroup controlId="fname" bsSize="large">
-                      <ControlLabel>First name</ControlLabel>
-                      <FormControl
-                          autoFocus
-                          type="fname"
-                          onChange={this.handleChange}
-                      />
-                  </FormGroup>
-                  <FormGroup controlId="lname" bsSize="large">
-                      <ControlLabel>Last name</ControlLabel>
-                      <FormControl
-                          autoFocus
-                          type="lname"
 
-                          onChange={this.handleChange}
-                      />
-                  </FormGroup>
-                  <FormGroup controlId="password" bsSize="large">
-                      <ControlLabel>Password</ControlLabel>
-                      <FormControl
-                          autoFocus
-                          type="password"
+              <label htmlFor="First name">First name:</label>
+              <input name="fname" type="text" onChange={this.handleChange}  />
 
-                          onChange={this.handleChange}
-                      />
-                  </FormGroup>
-                  <FormGroup controlId="transcription" bsSize="large">
-                      <ControlLabel>Transcription</ControlLabel>
-                      <FormControl
-                          autoFocus
-                          type="transcription"
+              <label htmlFor="Last name">Last name:</label>
+              <input name="lname" type="text" onChange={this.handleChange}  />
 
-                          onChange={this.handleChange}
-                      />
-                  </FormGroup>
-                  <FormGroup controlId="audo" bsSize="large">
-                      <ControlLabel>Pronunciation of name</ControlLabel>
-                      <FormControl
-                          autoFocus
-                          type="audio"
+              <label htmlFor="Password">Password:</label>
+              <input name="password" type="text" onChange={this.handleChange}  />
 
-                          onChange={this.handleChange}
-                      />
-                  </FormGroup>
-                  <FormGroup controlId="email" bsSize="large">
-                      <ControlLabel>Email</ControlLabel>
-                      <FormControl
-                          autoFocus
-                          type="email"
+              <label htmlFor="Transcription of name">Transcription of name:</label>
+              <input name="transcription" type="text" onChange={this.handleChange}  />
 
-                          onChange={this.handleChange}
-                      />
-                  </FormGroup>
-                  <FormGroup controlId="role" bsSize="large">
-                      <ControlLabel>Role</ControlLabel>
-                      <FormControl
-                          autoFocus
-                          type="role"
+              <label htmlFor="Pronounciation of name">Pronounciation of name:</label>
+              <input name="pronounce" type="audio" onChange={this.handleChange}  />
 
-                          onChange={this.handleChange}
-                      />
-                  </FormGroup>
-                  <FormGroup controlId="photo" bsSize="large">
-                      <ControlLabel>Photo</ControlLabel>
-                      <FormControl
-                          autoFocus
-                          type="photo"
+              <label htmlFor="LinkedIn">LinkedIn:</label>
+              <input name="LinkedIn" type="text" onChange={this.handleChange}  />
 
-                          onChange={this.handleChange}
-                      />
-                  </FormGroup>
-                  <FormGroup controlId="linkedIn" bsSize="large">
-                      <ControlLabel>LinkedIn</ControlLabel>
-                      <FormControl
-                          autoFocus
-                          type="linkedIn"
+              <label htmlFor="Email">Email:</label>
+              <input name="email" type="text" onChange={this.handleChange}  />
 
-                          onChange={this.handleChange}
-                      />
-                  </FormGroup>
-                  <Button
-                      block
-                      bsSize="large"
-                      type="submit"
-                  >
-                      Register
-                  </Button>
+              <label htmlFor="Role">Role:</label>
+              <input name="role" type="text" onChange={this.handleChange}  />
+
+              <label htmlFor="Photo">Photo:</label>
+              <input name="photo" type="text" onChange={this.handleChange}  />
+
+              <input type="submit" value="Submit"></input>
+              
               </form>
             </div>
         );
