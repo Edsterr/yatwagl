@@ -33,7 +33,7 @@ class App extends React.Component {
           <Route exact path="/" component={Home} />
           <Route path="/about" component={About} />
           <Route path="/profile" render={this.isLoggedIn.bind(this)} />
-          <Route path="/Register" component={Register} />
+          <Route path="/register" component={Register} />
           <Route path="/qr" component={qr} />
           <MenuBar />
         </div>
