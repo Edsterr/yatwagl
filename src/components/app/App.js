@@ -11,15 +11,15 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      name: ''
+      email: ''
     }
   }
 
   isLoggedIn() {
-    if (this.state.name === '') {
+    if (this.state.email === '') {
       return <Home />;
     } else {
-      return <Profile name={this.state.name}/>;
+      return <Profile email={this.state.email}/>;
     }
   }
 
