@@ -34,7 +34,7 @@ class App extends React.Component {
 
   submitLogin(email, password) {
       alert(email + '\n' + password);
-      this.setState({ email });
+      this.setState({email: email});
   }
 
   loginPage() {
