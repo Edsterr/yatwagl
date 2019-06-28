@@ -19,7 +19,7 @@ render() {
         <p>
           Let others scan your QR code to learn about you.
         </p>
-        <QRCode value= {'profile/' + this.props.email } size="192" includeMargin="true" level="H" />
+        <QRCode value= {'profile/' + this.props.email } size="128" includeMargin="true" level="H" />
 
         <h4>No QR code displayed? <Link to="/login">Login</Link></h4>
       </header>
