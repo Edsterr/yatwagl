@@ -67,7 +67,7 @@ class App extends React.Component {
             <Route path="/error" component={Error} />
             </Switch>
             <Route path="/qr" component={qr} />
-            <Route path="/qr" component={History} />
+            <Route path="/history" component={History} />
 
           <MenuBar />
         </div>

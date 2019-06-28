@@ -30,9 +30,6 @@ class qr extends Component {
       width: 320,
     }
 
-    var React = require('react');
-    var QRCode = require('qrcode.react');
-
     return(
       <div>
         <div><h3>Scan QR code</h3></div>
