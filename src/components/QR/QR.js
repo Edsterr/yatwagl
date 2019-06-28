@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import QrReader from 'react-qr-scanner'
+import QrReaderr from 'react-qr-reader'
 
 class qr extends Component {
   constructor(props){
@@ -35,19 +36,15 @@ class qr extends Component {
     return(
       <div>
 
-        <QrReader
+        <QrReaderr
           delay={this.state.delay}
           style={previewStyle}
           onError={this.handleError}
           onScan={this.handleScan}
           />
-        <p>{this.state.result}</p>
 
 
-        <QRCode value= "register" />
-        <a href={ this.state.result }>
-          <button>Click me</button>
-        </a>
+
       </div>
     )
   }
