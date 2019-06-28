@@ -56,3 +56,12 @@ input{
 #submit:active {
   background-color: #888;
 }
+
+
+div h3{
+  color: #941F39;
+  height: 30px;
+  text-align: left;
+  margin-top: 1rem;
+  margin-left: 0.5rem;
+}

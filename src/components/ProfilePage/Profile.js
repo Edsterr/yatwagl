@@ -24,7 +24,7 @@ class Profile extends React.Component {
             }
             var getData = new XMLHttpRequest();
             var self = this;
-            getData.onreadystatechange = function() { 
+            getData.onreadystatechange = function() {
                 if (getData.readyState == 4 && getData.status == 200) {
                     var data = JSON.parse(getData.responseText);
                     self.setState({
@@ -39,12 +39,12 @@ class Profile extends React.Component {
                     self.props.history.push("/error");
                 }
             }
-            getData.open("GET", `http://localhost:8080/users/${email}`, true); // true for asynchronous 
+            getData.open("GET", `http://localhost:8080/users/${email}`, true); // true for asynchronous
             getData.send(null);
 
             var getSound = new XMLHttpRequest();
             var self = this;
-            getSound.onreadystatechange = function() { 
+            getSound.onreadystatechange = function() {
                 if (getSound.readyState == 4 && getSound.status == 200) {
                     var data = JSON.parse(getSound.responseText);
                     self.setState({
@@ -59,7 +59,7 @@ class Profile extends React.Component {
                     })
                 }
             }
-            getSound.open("GET", `http://localhost:8080/audio/${email}`, true); // true for asynchronous 
+            getSound.open("GET", `http://localhost:8080/audio/${email}`, true); // true for asynchronous
             getSound.send(null);
         }
         this.state = {
@@ -106,42 +106,43 @@ class Profile extends React.Component {
         var reader = new FileReader();
         reader.onloadend = function() {
             console.log(self);
-            var base64data = reader.result;    
+            var base64data = reader.result;
             var data = {
                 id: self.state.email,
                 sound: base64data
             }
             var xmlHttp = new XMLHttpRequest();
-            xmlHttp.onreadystatechange = function() { 
+            xmlHttp.onreadystatechange = function() {
                 if (xmlHttp.status == 200)
                     console.log(xmlHttp.responseText);
             }
-            xmlHttp.open("POST", `http://localhost:8080/audio`, true); // true for asynchronous 
+            xmlHttp.open("POST", `http://localhost:8080/audio`, true); // true for asynchronous
             xmlHttp.setRequestHeader('Content-type', 'application/json');
             console.log(data);
-            xmlHttp.send(JSON.stringify(data));            
+            xmlHttp.send(JSON.stringify(data));
         }
-        reader.readAsDataURL(recordedBlob.blob); 
+        reader.readAsDataURL(recordedBlob.blob);
     }
-    
+
     onPlay(){
       this.sound.play();
     }
 
     deleteSound() {
         var deleteSoundFile = new XMLHttpRequest();
-        deleteSoundFile.onreadystatechange = function() { 
+        deleteSoundFile.onreadystatechange = function() {
             if (deleteSoundFile.readyState == 4 && deleteSoundFile.status == 200) {
                 console.log(deleteSoundFile.responseText);
             }
         }
-        deleteSoundFile.open("DELETE", `http://localhost:8080/audio/${this.state.email}`, true); // true for asynchronous 
+        deleteSoundFile.open("DELETE", `http://localhost:8080/audio/${this.state.email}`, true); // true for asynchronous
         deleteSoundFile.send(null);
     }
 
     render() {
         return (
             <div className="container">
+                <div><h3>Profile information</h3></div>
                 <div className="span3 well">
                     <div className="modal-content">
                         <div className="modal-body">

@@ -30,6 +30,16 @@ class App extends React.Component {
     }
   }
 
+  loggedInHome() {
+    console.log(this.state.email);
+    if (this.state.email === '') {
+      console.log("Here");
+      return <Home email = '' />;
+    } else {
+      return <Home email = {this.state.email} />;
+    }
+  }
+
   submitLogin(email, password) {
       alert(email + '\n' + password);
       this.setState({email: email});
@@ -44,7 +54,7 @@ class App extends React.Component {
       <Router>
         <div>
 
-            <Route exact path="/" component={Home} />
+            <Route exact path="/" render={this.loggedInHome.bind(this)} />
             <Route path="/about" component={About} />
             <Switch>
               <Route path="/profile/:email" render={this.isLoggedIn.bind(this)} />
@@ -57,7 +67,7 @@ class App extends React.Component {
             <Route path="/error" component={Error} />
             </Switch>
             <Route path="/qr" component={qr} />
-            <Route path="/qr" component={History} />
+            <Route path="/history" component={History} />
 
           <MenuBar />
         </div>

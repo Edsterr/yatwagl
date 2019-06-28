@@ -1,12 +1,10 @@
 @media all {
     .Register {
-        padding: 0px 0;
-        background-color: light-grey;
         text-align: center;
         overflow-y: scroll;
         width: 100%;
         height: 100%;
-        position: relative;
+        overflow-y: scroll;
     }
 
     .Register form {
@@ -41,7 +39,8 @@ body {
   font-family: 'Roboto Slab', sans-serif;
   background: white;
   color: #484848;
-  padding: 40px;
+  padding: 0;
+  overflow-y: scroll;
 }
 
 input {
@@ -51,8 +50,9 @@ input {
   padding: 10px;
   border: 1px solid #cfcfcf;
   font-family: 'Roboto Slab', sans-serif;
-  font-size: 16px;
+  font-size: 12px;
   outline: none;
+  color: black;
 }
 
 .displayErrors input:invalid {
@@ -122,4 +122,12 @@ h3 {
 .bounce {
   animation: bounce 0.5s;
   transform-origin: center bottom;
+}
+
+label{
+  margin-bottom: 0;
+}
+
+.column{
+  align-content: center;
 }
