@@ -70,7 +70,9 @@ class Profile extends React.Component {
             description: '',
             pronunciation: '',
             record: false,
-            audio: <p>Audio</p>
+            audio: <p>Audio</p>,
+            button: {display: "none"},
+            reactmic: {display: "none"}
         };
         this.onPlay = this.onPlay.bind(this);
         this.onStop = this.onStop.bind(this);
